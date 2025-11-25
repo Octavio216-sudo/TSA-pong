@@ -1,0 +1,100 @@
+[gd_scene load_steps=7 format=3 uid="uid://jyhqx61qf825"]
+
+[ext_resource type="Texture2D" uid="uid://cxgfmb7y55yhf" path="res://Map/sky backround.png" id="1_ajwtt"]
+[ext_resource type="Script" uid="uid://chuq6800svat3" path="res://Multiplayer/multi_map.gd" id="1_f315p"]
+[ext_resource type="Texture2D" uid="uid://df1k1qiqfasur" path="res://Map/clouds.png" id="2_3j02g"]
+[ext_resource type="PackedScene" uid="uid://b2ujbc13t1650" path="res://Paddle/Paddle.tscn" id="3_dmk2r"]
+[ext_resource type="PackedScene" uid="uid://dxriqn3xwgk4v" path="res://Ball/ball.tscn" id="4_i7kfs"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_e6lj2"]
+distance = -32.0
+
+[node name="Multi" type="Node2D"]
+script = ExtResource("1_f315p")
+
+[node name="SkyBackround" type="Sprite2D" parent="."]
+position = Vector2(728, 366)
+scale = Vector2(4.00556, 3.96111)
+texture = ExtResource("1_ajwtt")
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.2, 0.2)
+repeat_size = Vector2(1400, 0)
+autoscroll = Vector2(100, 0)
+follow_viewport = false
+
+[node name="Clouds" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(750, 357)
+texture = ExtResource("2_3j02g")
+
+[node name="Roof" type="StaticBody2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="Roof" type="CollisionShape2D" parent="Roof"]
+position = Vector2(484, 29)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_e6lj2")
+
+[node name="Floor" type="StaticBody2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="Floor" type="CollisionShape2D" parent="Floor"]
+position = Vector2(504, 700)
+shape = SubResource("WorldBoundaryShape2D_e6lj2")
+
+[node name="Paddle" parent="." instance=ExtResource("3_dmk2r")]
+position = Vector2(1026, 54)
+
+[node name="Paddle2" parent="." instance=ExtResource("3_dmk2r")]
+position = Vector2(1032, 374)
+
+[node name="Paddle3" parent="." instance=ExtResource("3_dmk2r")]
+position = Vector2(28, 391)
+
+[node name="Paddle4" parent="." instance=ExtResource("3_dmk2r")]
+position = Vector2(15, 60)
+
+[node name="Ball" parent="." instance=ExtResource("4_i7kfs")]
+position = Vector2(543, 220)
+disable_mode = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -344.0
+offset_right = 20.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="host" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = -6.0
+offset_top = 290.0
+offset_right = 50.0
+offset_bottom = 321.0
+text = "host"
+
+[node name="join" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.5
+offset_top = -15.5
+offset_right = 18.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "join"

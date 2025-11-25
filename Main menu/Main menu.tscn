@@ -1,0 +1,149 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcmy4gydxxp1g"]
+
+[ext_resource type="Script" uid="uid://bci3oe72q5y2f" path="res://Main menu/main_menu.gd" id="1_08uww"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_im6x4"]
+
+[sub_resource type="FontFile" id="FontFile_1gnwh"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/21/0/ascent = 0.0
+cache/0/21/0/descent = 0.0
+cache/0/21/0/underline_position = 0.0
+cache/0/21/0/underline_thickness = 0.0
+cache/0/21/0/scale = 1.0
+cache/0/22/0/ascent = 0.0
+cache/0/22/0/descent = 0.0
+cache/0/22/0/underline_position = 0.0
+cache/0/22/0/underline_thickness = 0.0
+cache/0/22/0/scale = 1.0
+cache/0/23/0/ascent = 0.0
+cache/0/23/0/descent = 0.0
+cache/0/23/0/underline_position = 0.0
+cache/0/23/0/underline_thickness = 0.0
+cache/0/23/0/scale = 1.0
+cache/0/24/0/ascent = 0.0
+cache/0/24/0/descent = 0.0
+cache/0/24/0/underline_position = 0.0
+cache/0/24/0/underline_thickness = 0.0
+cache/0/24/0/scale = 1.0
+cache/0/25/0/ascent = 0.0
+cache/0/25/0/descent = 0.0
+cache/0/25/0/underline_position = 0.0
+cache/0/25/0/underline_thickness = 0.0
+cache/0/25/0/scale = 1.0
+cache/0/26/0/ascent = 0.0
+cache/0/26/0/descent = 0.0
+cache/0/26/0/underline_position = 0.0
+cache/0/26/0/underline_thickness = 0.0
+cache/0/26/0/scale = 1.0
+cache/0/27/0/ascent = 0.0
+cache/0/27/0/descent = 0.0
+cache/0/27/0/underline_position = 0.0
+cache/0/27/0/underline_thickness = 0.0
+cache/0/27/0/scale = 1.0
+cache/0/28/0/ascent = 0.0
+cache/0/28/0/descent = 0.0
+cache/0/28/0/underline_position = 0.0
+cache/0/28/0/underline_thickness = 0.0
+cache/0/28/0/scale = 1.0
+cache/0/29/0/ascent = 0.0
+cache/0/29/0/descent = 0.0
+cache/0/29/0/underline_position = 0.0
+cache/0/29/0/underline_thickness = 0.0
+cache/0/29/0/scale = 1.0
+cache/0/30/0/ascent = 0.0
+cache/0/30/0/descent = 0.0
+cache/0/30/0/underline_position = 0.0
+cache/0/30/0/underline_thickness = 0.0
+cache/0/30/0/scale = 1.0
+cache/0/40/0/ascent = 0.0
+cache/0/40/0/descent = 0.0
+cache/0/40/0/underline_position = 0.0
+cache/0/40/0/underline_thickness = 0.0
+cache/0/40/0/scale = 1.0
+
+[sub_resource type="Theme" id="Theme_onkqs"]
+default_font = SubResource("FontFile_1gnwh")
+default_font_size = 30
+TextEdit/colors/background_color = Color(0.572549, 0, 0.501961, 0)
+TextEdit/colors/caret_background_color = Color(1, 1, 1, 1)
+TextEdit/colors/caret_color = Color(0.87451, 0.87451, 0, 1)
+TextEdit/colors/current_line_color = Color(0.25098, 0.25098, 0.905882, 1)
+TextEdit/font_sizes/font_size = 40
+TextEdit/styles/focus = SubResource("StyleBoxTexture_im6x4")
+
+[node name="Menu" type="Node"]
+script = ExtResource("1_08uww")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Main menu" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Main menu"]
+light_mask = 8
+visibility_layer = 8
+layout_mode = 0
+offset_right = 1438.0
+offset_bottom = 719.0
+color = Color(0.764706, 0.294118, 1, 1)
+
+[node name="Local online" type="Button" parent="CanvasLayer/Main menu"]
+visibility_layer = 4
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.0
+offset_top = -18.0
+offset_right = 98.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Local online"
+
+[node name="Offline" type="Button" parent="CanvasLayer/Main menu"]
+visibility_layer = 4
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -97.0
+offset_top = 47.0
+offset_right = 99.0
+offset_bottom = 83.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Offline"
+
+[node name="TextEdit" type="TextEdit" parent="CanvasLayer/Main menu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -390.0
+offset_top = 1.0
+offset_right = 353.0
+offset_bottom = 70.0
+grow_horizontal = 2
+theme = SubResource("Theme_onkqs")
+text = "                 Ultimate Ping Pong"
+
+[connection signal="pressed" from="CanvasLayer/Main menu/Local online" to="." method="_on_local_online_pressed"]
+[connection signal="pressed" from="CanvasLayer/Main menu/Offline" to="." method="_on_offline_pressed"]

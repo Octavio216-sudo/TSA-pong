@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://bk1bhdrciio0t"]
+
+[ext_resource type="Texture2D" uid="uid://dkbdhxvwuuuce" path="res://Ball/Ball.png" id="1_ih6w6"]
+[ext_resource type="Script" uid="uid://c4eew87pdfdot" path="res://Multiplayer/online_ball.gd" id="1_riqhg"]
+[ext_resource type="PackedScene" uid="uid://csv2x3max8w7d" path="res://Multiplayer/player.tscn" id="2_6hfr8"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gsxt4"]
+blend_mode = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gsxt4"]
+size = Vector2(11, 11)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_gsxt4"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[node name="Online_ball" type="StaticBody2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_riqhg")
+paddle_scene = ExtResource("2_6hfr8")
+
+[node name="Ball_image" type="Sprite2D" parent="."]
+texture = ExtResource("1_ih6w6")
+region_enabled = true
+region_rect = Rect2(116.468, 51.1325, 27.9415, 44.0854)
+
+[node name="speed_timer" type="Timer" parent="."]
+wait_time = 0.198
+one_shot = true
+
+[node name="Ball_physics" type="CollisionShape2D" parent="."]
+material = SubResource("CanvasItemMaterial_gsxt4")
+position = Vector2(-1, 0.5)
+shape = SubResource("RectangleShape2D_gsxt4")
+
+[node name="slow_timer" type="Timer" parent="."]
+wait_time = 0.254
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_gsxt4")
+
+[connection signal="timeout" from="speed_timer" to="." method="_on_speed_timer_timeout"]
+[connection signal="timeout" from="slow_timer" to="." method="_on_slow_timer_timeout"]

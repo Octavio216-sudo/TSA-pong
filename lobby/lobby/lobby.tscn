@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckp58q01v3tga"]
+
+[ext_resource type="Script" uid="uid://ybpoh2cu2eak" path="res://lobby/multiplayer_spawner.gd" id="1_mnguq"]
+[ext_resource type="PackedScene" uid="uid://c8lgm2cjikt5a" path="res://player/character_body_2d.tscn" id="2_gi5k6"]
+[ext_resource type="PackedScene" uid="uid://bhew3x03lm4m8" path="res://Matching/matcher.tscn" id="2_uj4ub"]
+
+[node name="Lobby" type="Node2D"]
+
+[node name="Control" parent="." instance=ExtResource("2_uj4ub")]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://c8lgm2cjikt5a")
+spawn_path = NodePath("..")
+script = ExtResource("1_mnguq")
+net_player = ExtResource("2_gi5k6")

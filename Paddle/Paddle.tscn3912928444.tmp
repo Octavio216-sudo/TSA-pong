@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://b2ujbc13t1650"]
+
+[ext_resource type="Texture2D" uid="uid://cmatgwmqhkjx2" path="res://Paddle/Paddle.png" id="1_p46gg"]
+[ext_resource type="Script" uid="uid://rkxlmw5nx767" path="res://Paddle/paddle.gd" id="1_wbsrr"]
+[ext_resource type="Script" uid="uid://dlfdpiladqfiu" path="res://Paddle/Turn_image.gd" id="3_a3v2t"]
+[ext_resource type="Script" uid="uid://njsfw6nseiyy" path="res://Paddle/Turn_physics.gd" id="3_io67v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wbsrr"]
+size = Vector2(16.4039, 51)
+
+[node name="Paddle" type="CharacterBody2D"]
+script = ExtResource("1_wbsrr")
+
+[node name="Paddle_physics" type="CollisionShape2D" parent="."]
+position = Vector2(170.75, 129.57)
+scale = Vector2(1.12778, 3.37342)
+shape = SubResource("RectangleShape2D_wbsrr")
+script = ExtResource("3_io67v")
+
+[node name="Paddle_image" type="Sprite2D" parent="."]
+position = Vector2(172, 144.75)
+scale = Vector2(1.12778, 3.37342)
+texture = ExtResource("1_p46gg")
+region_enabled = true
+region_rect = Rect2(0, 0, 37.8091, 79.755)
+script = ExtResource("3_a3v2t")

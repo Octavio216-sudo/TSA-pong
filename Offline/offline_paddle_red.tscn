@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://74nq7dtfe7xo"]
+
+[ext_resource type="Script" uid="uid://qjeembtisinl" path="res://Offline/CPU.gd" id="1_hfk4g"]
+[ext_resource type="Texture2D" uid="uid://gyb8dbrov43i" path="res://Paddle/Paddle_red.png" id="2_u63ua"]
+[ext_resource type="Script" uid="uid://ch0blw0s6najk" path="res://Offline/cpu_fsm.gd" id="3_u63ua"]
+[ext_resource type="Script" uid="uid://conmfsnrjb4he" path="res://Offline/Defensive.gd" id="5_16jcg"]
+[ext_resource type="Script" uid="uid://cadn0vl5tk6rr" path="res://Offline/Feint.gd" id="5_hfk4g"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dysbn"]
+radius = 3.54679
+height = 34.3865
+
+[node name="CPU" type="CharacterBody2D"]
+position = Vector2(50, -90)
+script = ExtResource("1_hfk4g")
+
+[node name="Paddle_image" type="Sprite2D" parent="."]
+position = Vector2(11, 19)
+scale = Vector2(2.25556, 3.37342)
+texture = ExtResource("2_u63ua")
+region_enabled = true
+region_rect = Rect2(0, 0, 37.8091, 79.755)
+
+[node name="Paddle_physics" type="CollisionShape2D" parent="."]
+position = Vector2(0, 7.62939e-06)
+scale = Vector2(2.25556, 3.37342)
+shape = SubResource("CapsuleShape2D_dysbn")
+
+[node name="charge_time" type="Timer" parent="."]
+wait_time = 0.023
+
+[node name="CPU_FSM" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
+script = ExtResource("3_u63ua")
+starting_state = NodePath("Defensive")
+
+[node name="Defensive" type="Node" parent="CPU_FSM" node_paths=PackedStringArray("feint")]
+script = ExtResource("5_16jcg")
+feint = NodePath("../feint")
+
+[node name="feint" type="Node" parent="CPU_FSM" node_paths=PackedStringArray("defensive")]
+script = ExtResource("5_hfk4g")
+defensive = NodePath("../Defensive")
+
+[connection signal="timeout" from="charge_time" to="CPU_FSM/feint" method="_on_charge_time_timeout"]

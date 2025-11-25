@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://v8l5v2y7plre"]
+
+[ext_resource type="Script" uid="uid://cpx5sx5jtsu0w" path="res://Offline/offline_player.gd" id="1_o4g3e"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_6ywy5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6xycb"]
+size = Vector2(7.53693, 33.2007)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_q18ti"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
+[node name="Online_player" type="CharacterBody2D"]
+modulate = Color(128.498, 128.498, 128.498, 1)
+position = Vector2(-50, -20)
+scale = Vector2(2, 1)
+script = ExtResource("1_o4g3e")
+
+[node name="Paddle_image" type="Sprite2D" parent="."]
+position = Vector2(0, 4.76841e-07)
+scale = Vector2(0.22973, 1.41772)
+texture = SubResource("CanvasTexture_6ywy5")
+region_enabled = true
+region_rect = Rect2(0, 0, 37.8091, 79.755)
+
+[node name="Paddle_physics" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.90735e-06)
+scale = Vector2(1.12778, 3.37342)
+shape = SubResource("RectangleShape2D_6xycb")
+
+[node name="charge_time" type="Timer" parent="."]
+wait_time = 0.023
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_q18ti")
