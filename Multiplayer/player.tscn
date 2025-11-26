@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://csv2x3max8w7d"]
+[gd_scene load_steps=5 format=3 uid="uid://cbrv5lj57bh6f"]
 
 [ext_resource type="Script" uid="uid://dk8c3f03yex4c" path="res://Multiplayer/player.gd" id="1_6ywy5"]
-[ext_resource type="PackedScene" uid="uid://bk1bhdrciio0t" path="res://Multiplayer/online_ball.tscn" id="2_6xycb"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_6ywy5"]
 
@@ -21,7 +20,6 @@ modulate = Color(128.498, 128.498, 128.498, 1)
 position = Vector2(-50, -20)
 scale = Vector2(2, 1)
 script = ExtResource("1_6ywy5")
-ball_scene = ExtResource("2_6xycb")
 
 [node name="Paddle_image" type="Sprite2D" parent="."]
 position = Vector2(0, 4.76841e-07)

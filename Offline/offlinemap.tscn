@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://cqkcuy5mblyxe"]
+[gd_scene load_steps=10 format=3 uid="uid://cqkcuy5mblyxe"]
 
 [ext_resource type="Script" uid="uid://dksvp8rm536g5" path="res://Map/offline_middle.gd" id="2_w3kjc"]
 [ext_resource type="PackedScene" uid="uid://chrmvioqdyaiv" path="res://Offline/offline_ball.tscn" id="4_o4oeg"]
 [ext_resource type="PackedScene" uid="uid://74nq7dtfe7xo" path="res://Offline/offline_paddle_red.tscn" id="4_vj5de"]
-[ext_resource type="PackedScene" uid="uid://csv2x3max8w7d" path="res://Multiplayer/player.tscn" id="4_w3kjc"]
-[ext_resource type="Script" uid="uid://cpx5sx5jtsu0w" path="res://Offline/offline_player.gd" id="5_o4oeg"]
+[ext_resource type="PackedScene" uid="uid://v8l5v2y7plre" path="res://Offline/offline_player.tscn" id="4_w3kjc"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vj5de"]
 distance = -32.0
@@ -71,6 +70,4 @@ shape = SubResource("SegmentShape2D_w3kjc")
 [node name="CPU" parent="." instance=ExtResource("4_vj5de")]
 position = Vector2(935, 318)
 
-[node name="Offlinepaddle" parent="." instance=ExtResource("4_w3kjc")]
-position = Vector2(254, 349)
-script = ExtResource("5_o4oeg")
+[node name="Online_player" parent="." instance=ExtResource("4_w3kjc")]

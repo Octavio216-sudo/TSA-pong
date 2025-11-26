@@ -1,11 +1,10 @@
 [gd_scene load_steps=13 format=3 uid="uid://jyhqx61qf825"]
 
-[ext_resource type="PackedScene" uid="uid://csv2x3max8w7d" path="res://Multiplayer/player.tscn" id="4_f315p"]
 [ext_resource type="Script" uid="uid://b0kmpcbha5hqn" path="res://Map/online_middle_wall.gd" id="5_f315p"]
-[ext_resource type="PackedScene" uid="uid://bk1bhdrciio0t" path="res://Multiplayer/online_ball.tscn" id="5_n438c"]
 [ext_resource type="Script" uid="uid://ba2oqlyrobpak" path="res://Multiplayer/multiplayer_spawner.gd" id="6_4ptax"]
 [ext_resource type="Script" uid="uid://niien7g6rv7t" path="res://Map/left_spawn.gd" id="6_5q3wr"]
 [ext_resource type="PackedScene" uid="uid://b8j0fg2tphxcq" path="res://Multiplayer/net_control.tscn" id="6_n438c"]
+[ext_resource type="PackedScene" uid="uid://dsp0cqgn5thyn" path="res://Multiplayer/online_ball.tscn" id="6_pbmnq"]
 [ext_resource type="Script" uid="uid://bqr13gv02nick" path="res://Map/right_spawn.gd" id="7_pbmnq"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_mvhpa"]
@@ -25,6 +24,9 @@ distance = -32.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4ptax"]
 distance = -32.0
+
+[sub_resource type="Resource" id="Resource_f315p"]
+metadata/__load_path__ = "res://Multiplayer/player.tscn"
 
 [node name="Multi" type="Node2D"]
 
@@ -76,14 +78,10 @@ offset_right = 674.0
 offset_bottom = 412.0
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("uid://csv2x3max8w7d")
 spawn_path = NodePath("..")
 spawn_limit = 2
 script = ExtResource("6_4ptax")
-net_player = ExtResource("4_f315p")
-
-[node name="Online_ball" parent="." instance=ExtResource("5_n438c")]
-position = Vector2(539, 268)
+net_player = SubResource("Resource_f315p")
 
 [node name="Left" type="Marker2D" parent="."]
 position = Vector2(252, 404)
@@ -92,3 +90,5 @@ script = ExtResource("6_5q3wr")
 [node name="Right" type="Marker2D" parent="."]
 position = Vector2(1098, 400)
 script = ExtResource("7_pbmnq")
+
+[node name="Online_ball" parent="." instance=ExtResource("6_pbmnq")]

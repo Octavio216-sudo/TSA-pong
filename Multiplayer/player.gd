@@ -1,3 +1,4 @@
+class_name Online_player
 extends CharacterBody2D
 
 @onready var charge_time: Timer = $charge_time

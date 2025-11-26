@@ -1,3 +1,4 @@
+class_name Online_ball
 extends StaticBody2D
 
 @onready var speed_timer: Timer = $speed_timer
